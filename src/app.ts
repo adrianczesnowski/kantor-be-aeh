@@ -2,7 +2,7 @@ import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import connectDB from './config/db';
 import healthRouter from './routes/health.routes';
-// import authRouter from './routes/auth.routes';
+import authRouter from './routes/auth.routes';
 // import walletRouter from './routes/wallet.routes';
 // import transactionRouter from './routes/transaction.routes';
 // import exchangeRouter from './routes/exchange.routes';
@@ -21,7 +21,7 @@ app.get('/api', (req: Request, res: Response) => {
 });
 
 app.use('/api/health', healthRouter);
-// app.use('/api/auth', authRouter);
+app.use('/api/auth', authRouter);
 // app.use('/api/wallets', walletRouter);
 // app.use('/api/transactions', transactionRouter);
 // app.use('/api/exchange', exchangeRouter);
