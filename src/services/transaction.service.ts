@@ -44,7 +44,6 @@ export const getTransactionById = async (transactionId: string, userId: string):
 
 /**
  * Pobiera historię transakcji dla danego użytkownika z paginacją, posortowaną od najnowszej.
- * Rozwiązuje błąd typowania Mongoose/TS poprzez użycie .lean() i jawne rzutowanie typu.
  * * @param userId - ID użytkownika, którego transakcje mają zostać pobrane.
  * @param limit - Maksymalna liczba transakcji do pobrania.
  * @param skip - Liczba transakcji do pominięcia (offset).
