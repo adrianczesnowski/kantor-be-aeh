@@ -11,6 +11,12 @@ if (!JWT_SECRET) {
     throw new Error("JWT_SECRET nie jest zdefiniowany w pliku .env");
 }
 
+/**
+ * Rejestruje nowego użytkownika i zapisuje go w bazie danych.
+ * @param userData - Obiekt zawierający e-mail i hasło użytkownika.
+ * @returns Obiekt nowo zarejestrowanego użytkownika.
+ * @throws Błąd, jeśli użytkownik o podanym e-mailu już istnieje.
+ */
 export const registerUser = async (userData: Pick<IUser, 'email'> & { password: string }): Promise<IUser> => {
     const { email, password } = userData;
 
@@ -31,6 +37,12 @@ export const registerUser = async (userData: Pick<IUser, 'email'> & { password: 
     return newUser;
 };
 
+/**
+ * Weryfikuje dane logowania użytkownika i generuje token JWT.
+ * @param credentials - Obiekt zawierający e-mail i hasło.
+ * @returns Obiekt z tokenem JWT i danymi użytkownika.
+ * @throws Błąd, jeśli e-mail lub hasło są nieprawidłowe.
+ */
 export const loginUser = async (credentials: Pick<IUser, 'email'> & { password: string }): Promise<{ token: string, user: IUser }> => {
     const { email, password } = credentials;
 

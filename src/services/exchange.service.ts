@@ -2,6 +2,16 @@ import User from '../models/user.model';
 import * as NbpService from './nbp.service';
 import { createTransaction } from './transaction.service';
 
+/**
+ * Przetwarza logikę wymiany walut między portfelami użytkownika.
+ * Pobiera aktualne kursy, oblicza wymianę, aktualizuje salda i tworzy transakcję.
+ * @param userId - ID użytkownika dokonującego wymiany.
+ * @param fromCurrency - Kod waluty źródłowej (np. 'PLN').
+ * @param toCurrency - Kod waluty docelowej (np. 'EUR').
+ * @param fromAmount - Kwota do wymiany w walucie źródłowej.
+ * @returns Obiekt podsumowujący pomyślną transakcję.
+ * @throws Błąd, jeśli walidacja (np. saldo) lub pobieranie kursów się nie powiedzie.
+ */
 export const performExchange = async (
     userId: string,
     fromCurrency: string,

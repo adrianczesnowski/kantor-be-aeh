@@ -18,7 +18,7 @@ interface NbpRateResponse {
 }
 
 /**
- * 🏛️ Pobiera całą tabelę kursów (A, B lub C) z NBP.
+ * Pobiera całą tabelę kursów (A, B lub C) z NBP.
  * @param table - Typ tabeli ('a', 'b' lub 'c').
  * @returns Lista kursów z danej tabeli.
  */
@@ -36,7 +36,7 @@ export const getRatesTable = async (table: 'a' | 'b' | 'c') => {
 };
 
 /**
- * 📈 Pobiera historyczne kursy dla danej waluty z ostatnich X dni (z tabeli A lub B).
+ * Pobiera historyczne kursy dla danej waluty z ostatnich X dni (z tabeli A lub B).
  * @param currencyCode - Kod waluty (np. 'EUR', 'THB').
  * @param days - Liczba dni do pobrania (np. 30).
  * @returns Lista historycznych kursów.

@@ -15,10 +15,6 @@ interface NbpRateResponse {
 
 const NBP_API_URL = 'https://api.nbp.pl/api/exchangerates/rates';
 
-/**
- * Symuluje kurs kupna (bid) i sprzedaży (ask) na podstawie kursu średniego (mid).
- * Zakładamy spread +/- 2% (czyli 0.98 dla kupna i 1.02 dla sprzedaży).
- */
 const simulateBidAskFromMid = (mid: number) => {
     const SPREAD_MARGIN = 0.02;
     return {
@@ -27,6 +23,13 @@ const simulateBidAskFromMid = (mid: number) => {
     };
 };
 
+/**
+ * Pobiera kurs średni (z tabeli A lub B) i symuluje kursy 'bid' i 'ask'.
+ * Zakłada 2% spreadu (kupno 0.98 * mid, sprzedaż 1.02 * mid).
+ * @param currencyCode - Kod waluty do pobrania (np. 'EUR', 'USD').
+ * @returns Obiekt z obliczonymi kursami 'bid' i 'ask'.
+ * @throws Błąd, jeśli waluta nie zostanie znaleziona lub wystąpi błąd NBP.
+ */
 export const getCurrencyRates = async (currencyCode: string): Promise<{ bid: number, ask: number }> => {
     const code = currencyCode.toLowerCase();
 
