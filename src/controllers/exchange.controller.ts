@@ -2,6 +2,11 @@ import { Response } from 'express';
 import { IAuthRequest } from '../middleware/auth.middleware';
 import * as ExchangeService from '../services/exchange.service';
 
+/**
+ * @desc Wymiana waluty pomiędzy kontami użytkownika
+ * @route POST /api/exchange
+ * @access Private
+ */
 export const exchangeCurrency = async (req: IAuthRequest, res: Response) => {
     const userId = req.userId!;
     const { fromCurrency, toCurrency, amount } = req.body;

@@ -1,6 +1,11 @@
 import { Request, Response } from 'express';
 import * as RateService from '../services/rate.service';
 
+/**
+ * @desc Pobieranie najnowszych kursów walut (tabele A i B)
+ * @route GET /api/rates
+ * @access Public
+ */
 export const getLatestRates = async (req: Request, res: Response) => {
     try {
         const [ratesA, ratesB] = await Promise.all([
@@ -16,6 +21,11 @@ export const getLatestRates = async (req: Request, res: Response) => {
     }
 };
 
+/**
+ * @desc Pobranie historii kursów dla konkretnej waluty
+ * @route GET /api/rates/history/:currencyCode
+ * @access Public
+ */
 export const getCurrencyHistory = async (req: Request, res: Response) => {
     try {
         const { currencyCode } = req.params;
